@@ -33,6 +33,11 @@ a{
    align-items: flex-start;
    justify-content: space-between;
 }
+.js-list{
+   padding: 0px;
+   margin: 0px;
+   list-style: none;
+}
 
 
 @media only screen and (width: 576px) {

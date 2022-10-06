@@ -1,35 +1,65 @@
 let elForm = document.querySelector('.js-form')
-let elBox = document.querySelector('.diaz-box')
+let elList = document.querySelector('.js-list')
 let elInp1 = document.querySelector('.js-inp1')
 let elInp2 = document.querySelector('.js-inp2')
 let elInp3 = document.querySelector('.js-inp3')
 
+const result = []
+
+let today = ((array, list) => {
+   list.innerHTML = ''
+   
+   array.forEach(function(item){
+      newItem = document.createElement("li")
+      newTitle = document.createElement("h2")
+      newText = document.createElement("h3")
+      newTell = document.createElement("a")
+      newBtn = document.createElement('button')
+      
+      
+      newTitle.textContent = item.name;
+      newText.textContent = item.relationship;
+      newTell.textContent = item.number;
+      newTell.href = `tel:${elInp3.value}`;
+      newBtn.textContent = 'Delete'
+
+      newBtn.setAttribute('class', 'btn btn-danger ms-4 js-btn')
+      
+      newItem.appendChild(newTitle)
+      newItem.appendChild(newText)
+      newItem.appendChild(newTell) 
+      newItem.appendChild(newBtn) 
+      list.appendChild(newItem)
+
+      newBtn.dataset.todoId = item.id
+   })
+})
 
 elForm.addEventListener('submit', function(evt){
    evt.preventDefault()
-   let array = [
+
+   result.push(
       {
+         id: result.length,
          name: elInp1.value,
          relationship: elInp2.value,
          number: elInp3.value
       }
-   ]
+   )
 
-   array.forEach(function(arr){
-      newTitle = document.createElement("h2")
-      newText = document.createElement("h3")
-      newTell = document.createElement("a")
-   
-   
-      newTitle.textContent = arr.name;
-      newText.textContent = arr.relationship;
-      newTell.textContent = arr.number;
-      newTell.href = `tel:${elInp3.value}`;
-      
+   elInp1.value = '';
+   elInp2.value = '';
+   elInp3.value = '';
 
-      
-      elBox.appendChild(newTitle)
-      elBox.appendChild(newText)
-      elBox.appendChild(newTell)   
-   })
+   today(result, elList)
+})
+
+elList.addEventListener('click', function(evt){
+   if(evt.target.matches('.js-btn')){
+      let todoId = evt.target.dataset.todoId
+      let findedIndex = result.findIndex((el) => el.id == todoId)
+      result.splice(findedIndex, 1)
+
+      today(result, elList)
+   }
 })
