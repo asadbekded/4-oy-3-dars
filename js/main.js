@@ -23,7 +23,7 @@ let today = ((array, list) => {
       newTell.href = `tel:${elInp3.value}`;
       newBtn.textContent = 'Delete'
 
-      newBtn.setAttribute('class', 'btn btn-danger ms-4 js-btn')
+      newBtn.setAttribute('class', 'btn btn-danger js-btn')
       
       newItem.appendChild(newTitle)
       newItem.appendChild(newText)
@@ -38,18 +38,24 @@ let today = ((array, list) => {
 elForm.addEventListener('submit', function(evt){
    evt.preventDefault()
 
-   result.push(
-      {
-         id: result.length,
-         name: elInp1.value,
-         relationship: elInp2.value,
-         number: elInp3.value
-      }
-   )
-
-   elInp1.value = '';
-   elInp2.value = '';
-   elInp3.value = '';
+   let findded = result.findIndex((item) => item.number == elInp3.value)
+   
+   if(findded >= 0){
+      alert('Bu raqam oldin royxatga kiritilgan ❗❗❗ Iltimos boshqa raqam kiritishingizni soraymiz bratjan ❗❗❗')
+   }else{
+      result.push(
+         {
+            id: result.length  ? result[result.length - 1].id + 1 : 1,
+            name: elInp1.value, 
+            relationship: elInp2.value,
+            number: elInp3.value
+         }
+      )
+   
+      elInp1.value = '';
+      elInp2.value = '';
+      elInp3.value = '';
+   }
 
    today(result, elList)
 })

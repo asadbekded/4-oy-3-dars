@@ -1,5 +1,5 @@
 .container{
-   width: 800px;
+   width: 1000px;
    margin: 0px auto;
    padding: 0px 20px;
 }
@@ -13,12 +13,13 @@ h1{
 
 h2{
    color: blue;
-   margin-top: 30px;
-   margin-bottom: 50px;
+   margin: 0px;
+   margin-right: 10px;
 }
 h3{
    color: blue;
-   margin-bottom: 60px;
+   margin: 0px;
+   margin-right: 10px;
 }
 a{
    text-decoration: none;
@@ -37,6 +38,18 @@ a{
    padding: 0px;
    margin: 0px;
    list-style: none;
+}
+li{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-bottom: 15px;
+   background-color: aquamarine;
+   padding: 14px 16px 14px 16px;
+   border-radius: 20px;
+}
+.js-btn{
+   margin-left: 10px;
 }
 
 
