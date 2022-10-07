@@ -1,5 +1,6 @@
 .container{
-   width: 1000px;
+   width: 100%;
+   max-width: 1000px;
    margin: 0px auto;
    padding: 0px 20px;
 }
@@ -53,11 +54,14 @@ li{
 }
 
 
-@media only screen and (width: 576px) {
+@media only screen and (max-width: 576px) {
    .contant{
-      display: flex;
+      display: block;
    }
    .just{
-      width: 200px;
+      width: 100%;
+   }
+   .js-list{
+      margin-top: 30px;
    }
 }
