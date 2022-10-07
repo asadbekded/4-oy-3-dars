@@ -41,7 +41,7 @@ elForm.addEventListener('submit', function(evt){
    let findded = result.findIndex((item) => item.number == elInp3.value)
    
    if(findded >= 0){
-      alert('Bu raqam oldin royxatga kiritilgan ❗❗❗ Iltimos boshqa raqam kiritishingizni soraymiz bratjan ❗❗❗')
+      alert('Bu raqam oldin royxatga kiritilgan ❗❗❗ Iltimos boshqa raqam kiriting ❗❗❗')
    }else{
       result.push(
          {
