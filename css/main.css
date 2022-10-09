@@ -53,6 +53,9 @@ li{
    margin-left: 10px;
 }
 
+.js-lbl{
+   color: #0a6c6c;
+}
 
 @media only screen and (max-width: 576px) {
    .contant{

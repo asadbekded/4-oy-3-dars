@@ -4,7 +4,10 @@ let elInp1 = document.querySelector('.js-inp1')
 let elInp2 = document.querySelector('.js-inp2')
 let elInp3 = document.querySelector('.js-inp3')
 
-const result = []
+const localData = JSON.parse(window.localStorage.getItem('list'))
+
+
+const result = localData || []
 
 let today = ((array, list) => {
    list.innerHTML = ''
@@ -35,6 +38,9 @@ let today = ((array, list) => {
    })
 })
 
+today(result, elList)
+
+
 elForm.addEventListener('submit', function(evt){
    evt.preventDefault()
 
@@ -55,6 +61,7 @@ elForm.addEventListener('submit', function(evt){
       elInp1.value = '';
       elInp2.value = '';
       elInp3.value = '';
+      window.localStorage.setItem('list', JSON.stringify(result))
    }
 
    today(result, elList)
@@ -66,6 +73,38 @@ elList.addEventListener('click', function(evt){
       let findedIndex = result.findIndex((el) => el.id == todoId)
       result.splice(findedIndex, 1)
 
+      window.localStorage.removeItem('list')
+      window.location.reload();
       today(result, elList)
    }
 })
+
+
+
+
+
+
+
+const modeBtn = document.querySelector('.js-mode')
+const elLabel = document.querySelector('.js-lbl')
+var theme = false
+
+modeBtn.addEventListener('click', function () {
+   theme = !theme;
+   window.localStorage.setItem('theme', theme ? 'dark' : 'light')
+   changeTheme()
+})
+
+function changeTheme() {
+   if(window.localStorage.getItem('theme') == 'dark'){
+      document.body.style.backgroundColor = '#333'
+      modeBtn.setAttribute('class', 'btn btn-light')
+      modeBtn.textContent = 'Light'
+   }
+   else{
+      document.body.style.backgroundColor = '#fff'
+      modeBtn.setAttribute('class', 'btn btn-dark')
+      modeBtn.textContent = 'Dark'
+   }
+}
+changeTheme()
